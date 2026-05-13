@@ -16,12 +16,6 @@ export interface Candidate {
   status: string;
 }
 
-export interface ApiResponse<T = unknown> {
-  success: boolean;
-  data?: T;
-  error?: string;
-}
-
 export const STAGE_LIST = [
   "Screening CV",
   "Submitted Test",
@@ -38,7 +32,9 @@ export const SOURCES = [
   "Glints", "Kalibrr", "Walk-in", "Other",
 ] as const;
 
-export const FINAL_STATUSES = ["Hired", "Rejected", "Offering", "On Hold", "Withdraw"] as const;
+export const FINAL_STATUSES = [
+  "Hired", "Rejected", "Offering", "On Hold", "Withdraw",
+] as const;
 
 export const ROLES = {
   all:            { label: "All (Admin)",    stages: "all" as const,   canEdit: true  },
@@ -49,3 +45,30 @@ export const ROLES = {
 } as const;
 
 export type RoleKey = keyof typeof ROLES;
+
+// Column indices (0-based) — sesuaikan jika kolom beda
+export const COL = {
+  email:       0,  // A
+  name:        1,  // B
+  position:    2,  // C
+  source:      3,  // D
+  pic:         4,  // E
+  scr:         5,  // F
+  test:        16, // Q
+  rcp:         24, // Y
+  u1res:       28, // AC
+  usri:        44, // AS
+  offr:        51, // AZ
+  finalStatus: 55, // BD
+  whatsapp:    59, // BH
+  status:      60, // BI
+} as const;
+
+export const STAGE_COL_MAP: Record<string, number> = {
+  "Screening CV":    6,   // F (1-based untuk Sheets API)
+  "Submitted Test":  17,  // Q
+  "Recap to User":   25,  // Y
+  "User 1 Response": 29,  // AC
+  "User Interview":  45,  // AS
+  "Offering":        52,  // AZ
+};

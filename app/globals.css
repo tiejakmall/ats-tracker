@@ -22,7 +22,6 @@
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
 html { font-size: 14px; }
 body {
   font-family: var(--sans);
@@ -30,12 +29,6 @@ body {
   color: var(--ink);
   -webkit-font-smoothing: antialiased;
 }
-
-/* Scrollbar */
 ::-webkit-scrollbar { width: 6px; height: 6px; }
 ::-webkit-scrollbar-track { background: transparent; }
 ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
-
-/* Transitions */
-* { transition-property: background-color, border-color, color, opacity;
-    transition-duration: 120ms; transition-timing-function: ease; }
